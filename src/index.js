@@ -16,9 +16,10 @@ app.get('/api/politicians', (req, res) => {
         if (err) throw err;
         console.log(result);
         client.close();
+        // perform actions on the collection object
+        res.status(200);
+
       });
-    // perform actions on the collection object
-    res.status(200);
   });
 
 });
