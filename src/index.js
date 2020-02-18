@@ -12,14 +12,24 @@ app.get('/api/politicians', (req, res) => {
   client.connect(err => {
     client.db("politicians")
       .collection("politicians")
-      .find({}, function (err, result) {
-        if (err) throw err;
-        console.log(result);
-        client.close();
-        // perform actions on the collection object
-        res.status(200).send("test");
+      .find({}).toArray(function (err, docs) {
+        if (err) {
+          // Reject the Promise with an error
+          res.status(500).send("Error");
+        }
+        console.log(docs);
 
+        // Resolve (or fulfill) the promise with data
+        res.status(200).send("test", docs);
       });
+    // , function (err, result) {
+    //   if (err) throw err;
+    //   console.log(result);
+    //   client.close();
+    //   // perform actions on the collection object
+    //   res.status(200).send("test");
+
+    // });
   });
 
 });
