@@ -8,9 +8,16 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // An api endpoint that returns a short list of items
 app.get('/api/getList', (req,res) => {
-    var list = ["item1", "item2", "item3"];
-    res.json(list);
-    console.log('Sent list of items');
+    
+const MongoClient = require('mongodb').MongoClient;
+const uri = `mongodb+srv://${process.env.MONGODB_ATLAS_USERNAME}:${process.env.MONGODB_ATLAS_PASSWORD}@cluster0-jbzhq.mongodb.net/politicians?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 });
 
 // Handles any requests that don't match the ones above
