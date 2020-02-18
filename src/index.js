@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
 
 // An api endpoint that returns a short list of items
 app.get('/api/politicians', (req, res) => {
