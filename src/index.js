@@ -20,7 +20,7 @@ app.get('/api/politicians', (req, res) => {
         console.log(docs);
 
         // Resolve (or fulfill) the promise with data
-        res.status(200).send("test", docs);
+        res.status(200).send(docs);
       });
     // , function (err, result) {
     //   if (err) throw err;
