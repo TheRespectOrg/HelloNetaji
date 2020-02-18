@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+require('dotenv').config();
 const app = express();
 
 // An api endpoint that returns a short list of items

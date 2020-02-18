@@ -10,6 +10,7 @@
   "author": "Zameer Ansari <zameeramir@gmail.com> (https://nordible.com)",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.3"
   }
