@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // An api endpoint that returns a short list of items
-app.get('/api/getList', (req,res) => {
+app.get('/api/politicians', (req,res) => {
     
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.MONGODB_ATLAS_USERNAME}:${process.env.MONGODB_ATLAS_PASSWORD}@cluster0-jbzhq.mongodb.net/politicians?retryWrites=true&w=majority`;
