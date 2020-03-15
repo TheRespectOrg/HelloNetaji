@@ -76,6 +76,29 @@ app.get('/api/politicians', (req, res) => {
 
 });
 
+// An api endpoint that returns a short list of items
+app.get('/api/petitions/count', (req, res) => {
+  const client = getMongoClient();
+
+  client.connect(err => {
+    client.db("petitions")
+      .collection("petitions")
+      .countDocuments({}, function (err, petitionsCount) {
+        if (err) {
+          // Reject the Promise with an error
+          res.status(500).send("Error");
+        }
+        console.log(petitionsCount);
+
+        // Resolve (or fulfill) the promise with data
+        client.close();
+
+        res.status(200).send(petitionsCount);
+      });
+  });
+
+});
+
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../client')));
 
