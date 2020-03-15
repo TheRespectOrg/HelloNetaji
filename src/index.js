@@ -32,7 +32,7 @@ app.post('/api/petitions', (req, res) => {
     Address: req.body.Address
   };
 
-  
+
   const client = getMongoClient();
 
   client.connect(err => {
@@ -93,7 +93,7 @@ app.get('/api/petitions/count', (req, res) => {
         // Resolve (or fulfill) the promise with data
         client.close();
 
-        res.status(200).send(petitionsCount);
+        res.status(200).send({ petitionsCount: petitionsCount });
       });
   });
 
